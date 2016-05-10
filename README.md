@@ -99,7 +99,35 @@ sudo apt-get install git -y
 This will install the program "git" onto our pi
 
 ### <a name="wifi"></a>Connecting to WiFi
-In order to connect over wifi, we need to setup our wireless credentials. 
+In order to connect over wifi, we need to setup our wireless credentials. To do this, enter the following into the pi's Terminal
+```
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+```
+The file that you open will look something like this:
+```
+country=GB
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+```
+We're going to update it with our wifi info:
+The file that you open will look something like this:
+```
+country=GB
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+network={
+    ssid="name_of_wifi_network"
+    psk="wifi_password"
+}
+```
+Once you have updated the text, hit ctrl + "x" to exit, and hit "y", then "enter" to save the file with your update.
+
+Now type in the following, and in a few seconds your wifi should be up and running!
+```
+sudo service networking restart
+```
+
+Assuming everything goes according to pla, you now have a working wifi connection on your raspberry pi. Feel free to disconnect your ethernet cable, it's no longer necessary.
 
 ### <a name="blink"></a>GPIO, aka the Pi's pins
 
