@@ -46,18 +46,25 @@ Note:
 - When it's done, a message should pop up on the screen to let you know it's okay to remove the SD card.  
 
 ### <a name="power"></a>Plug in your SD card and power up your Raspberry Pi
-Once the Pi Filler script is done running, remove the micro SD card, and place it into the Raspberry Pi's micro SD card slot. On the newer models, there's no satisfying "snap" when you slide the SD card in place. Don't worry, it should work just fine. Connect your wifi router to your Raspberry pi's Ethernet port using an ethernet cable. Finally, plug your power supply in to the wall, and connect the micro usb end of it into your raspberry pi. You should immediately see lights flashing. Hooray!
+Once the Pi Filler script is done running:
+- remove the micro SD card, and place it into the Raspberry Pi's micro SD card slot. (note: On the newer models, there's no satisfying "snap" when you slide the SD card in place. Don't worry, it should work just fine.)
+- Connect your wifi router to your Raspberry pi's Ethernet port using an ethernet cable. 
+- Finally, plug your power supply in to the wall, and connect the micro usb end of it into your raspberry pi. You should immediately see lights flashing. Hooray!
 
 ### <a name="ssh"></a>SSH'ing in to your Pi
-We need to find out where our raspberry pi is. One way to do this is using Bonjour. Download Bonjour Browser [here](http://www.tildesoft.com/files/BonjourBrowser.dmg). Install the download and run it. Once it's running, you should see a list of devices available on your network. Open the "Workgroup Manager" tab. You should see your device listed there, as "raspberrypi". If you open the "raspberrypi tab" you will see two numbers listed. The first one is your IP address. We're going to use this number to sign in to our raspberry pi.
-Note, don't use the ":9" at the end of your ip address
+We need to find out where our raspberry pi is. One way to do this is using Bonjour.
+- Download Bonjour Browser [here](http://www.tildesoft.com/files/BonjourBrowser.dmg). Install the download and run it. 
+- Once it's running, you should see a list of devices available on your network.
+- Open the "Workgroup Manager" tab. You should see your device listed there, as "raspberrypi". 
+- Open the "raspberrypi tab" next. You will see two numbers listed. The first one is your IP address. We're going to use this number to sign in to our raspberry pi.(Note: don't use the ":9" at the end of your ip address)
 
 Open your "Terminal" program and type in the following below:
 ```
 ssh pi@<your ip address>
 ```
 (replace <your ip address> with your ip address)
-Once you hit enter. You may be propted with a dialog about fingerprints, just type "yes" and hit enter. You should then be prompted to enter a password. Type in "raspberry" for the password.
+Once you hit enter you may be propted with a dialog about "fingerprints". Just type "yes" and hit enter. 
+You should then be prompted to enter a password. Type in "raspberry" for the password.
 Hooray, you just ssh'd in to your Raspberry Pi!
 
 ### <a name="config"></a>Customizing your Pi
@@ -84,7 +91,7 @@ ssh pi@hovapi.local
 ### <a name="update"></a>Updating your Pi
 Ssh back into your pi, as described in the last step.
 This next part will take some time, so prepare yourself for a nice break. 
-Once you are ssh'd in, type in the following
+Once you are ssh'd in, type in the following: 
 ```
 sudo apt-get update
 ```
@@ -99,7 +106,7 @@ sudo apt-get install git -y
 This will install the program "git" onto our pi
 
 ### <a name="wifi"></a>Connecting to WiFi
-In order to connect over wifi, we need to setup our wireless credentials. To do this, enter the following into the pi's Terminal
+In order to connect over wifi, we need to setup our wireless credentials. To do this, enter the following into the pi's Terminal:
 ```
 sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 ```
@@ -122,12 +129,12 @@ network={
 ```
 Once you have updated the text, hit ctrl + "x" to exit, and hit "y", then "enter" to save the file with your update.
 
-Now type in the following, and in a few seconds your wifi should be up and running!
+Now type in the following, and in a few seconds your wifi should be up and running! -->
 ```
 sudo service networking restart
 ```
 
-Assuming everything goes according to pla, you now have a working wifi connection on your raspberry pi. Feel free to disconnect your ethernet cable, it's no longer necessary.
+Assuming everything goes according to plan, you now have a working wifi connection on your raspberry pi. Feel free to disconnect your ethernet cable, it's no longer necessary.
 
 ### <a name="blink"></a>GPIO, aka the Pi's pins
 
