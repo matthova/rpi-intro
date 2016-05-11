@@ -64,7 +64,8 @@ ssh pi@<your ip address>
 ```
 (replace <your ip address> with your ip address)
 Once you hit enter you may be propted with a dialog about "fingerprints". Just type "yes" and hit enter. 
-You should then be prompted to enter a password. Type in "raspberry" for the password.
+You should then be prompted to enter a password. Type in "raspberry" for the password. No quotes.
+
 Hooray, you just ssh'd in to your Raspberry Pi!
 
 ### <a name="config"></a>Customizing your Pi
@@ -82,7 +83,8 @@ We're going to do the following:
   With "#9 Advanced Options" hit enter. Now select "A2 Hostname" and hit enter. Follow the dialog and update the hostname from "raspberrypi" to any name you want. You can only use characters, numbers, and dashes (no underscores).
 Once you have completed all of these steps, you will want to reboot your pi. Do this by hitting the "->" right arrow twice, and then hitting enter, to select "Finish". Hit ok.
 
-It will take about a minute for the pi to reboot.
+It will take about a minute for the pi to reboot. Don't worry.
+
 Remember what you renamed your "raspberrypi" hostname to? You can now use that name to ssh in to your pi. For example, if my pi was called "hovapi" I would type the following:
 ```
 ssh pi@hovapi.local
