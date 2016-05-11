@@ -75,6 +75,7 @@ sudo raspi-config
 ```
 Use your arrow keys and "enter" button to navigate the menu.
 We're going to do the following:
+
 1. Expand Filesystem
   With "#1 Expand Filesystem" selected, hit enter. This will allow your pi to use it's full capacity. Hit ok.
 2. Change User password
