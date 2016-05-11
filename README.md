@@ -34,42 +34,46 @@ The following items are only necessary if you want to connect your Raspberry Pi 
 - 1 LED
 
 ### <a name="raspbian"></a>Downloading a "Raspbian" Image
-In order to run your Raspberry Pi, you will need to download an Operating System. Download Raspbian Jessie Lite zip file [here](https://www.raspberrypi.org/downloads/raspbian/).  
-Once the download is complete, unzip it. The unzipped file should have a file extension ".img"
+In order to run your Raspberry Pi, you will need to download an Operating System.
+- Download Raspbian Jessie Lite zip file [here](https://www.raspberrypi.org/downloads/raspbian/).  
+- Once the download is complete, unzip it. The unzipped file should have a file extension ".img"
+
 ##### Writing Raspbian to SD
-On Mac, we will use the Pi Filler Script, to write our .img file onto the SD card. Download Pi Filler [here](http://ivanx.com/raspberrypi/files/PiFiller.zip).
-After you unzip the file, feel free to drag it to your "Applications" folder. Double click on "Pi Filler" and follow its instructions.
-Note:
-- An uncompressed Raspberry Pi image, is referring to the ".img" file that we just unzipped. 
-- You will see some scary messages saying that the program is going to "erase" the sd card. It's okay, that's a part of the process.
-- Writing the OS onto the SD card should take 2-3 minutes.  
-- When it's done, a message should pop up on the screen to let you know it's okay to remove the SD card.  
+On Mac, we will use the Pi Filler Script, to write our .img file onto the SD card.
+- Download Pi Filler [here](http://ivanx.com/raspberrypi/files/PiFiller.zip).
+After you unzip the file, feel free to drag it to your "Applications" folder.
+- Double click on "Pi Filler" and follow its instructions.
+
+(Note: An uncompressed Raspberry Pi image, is referring to the ".img" file that we just unzipped.)
+
+Next you will see some scary messages saying that the program is going to "erase" the sd card. It's okay, that's a part of the process. Writing the OS onto the SD card should take 2-3 minutes. When it's done, a message should pop up on the screen to let you know it's okay to remove the SD card.  
 
 ### <a name="power"></a>Plug in your SD card and power up your Raspberry Pi
 Once the Pi Filler script is done running:
-- remove the micro SD card, and place it into the Raspberry Pi's micro SD card slot. (note: On the newer models, there's no satisfying "snap" when you slide the SD card in place. Don't worry, it should work just fine.)
-- Connect your wifi router to your Raspberry pi's Ethernet port using an ethernet cable. 
+- Remove the micro SD card, and place it into the Raspberry Pi's micro SD card slot. (note: On the newer models, there's no satisfying "snap" when you slide the SD card in place. Don't worry, it should work just fine.)
+- Connect your wifi router to your Raspberry pi's Ethernet port using an ethernet cable.
 - Finally, plug your power supply in to the wall, and connect the micro usb end of it into your raspberry pi. You should immediately see lights flashing. Hooray!
 
 ### <a name="ssh"></a>SSH'ing in to your Pi
 We need to find out where our raspberry pi is. One way to do this is using Bonjour.
-- Download Bonjour Browser [here](http://www.tildesoft.com/files/BonjourBrowser.dmg). Install the download and run it. 
+- Download Bonjour Browser [here](http://www.tildesoft.com/files/BonjourBrowser.dmg). Install the download and run it.
 - Once it's running, you should see a list of devices available on your network.
-- Open the "Workgroup Manager" tab. You should see your device listed there, as "raspberrypi". 
-- Open the "raspberrypi tab" next. You will see two numbers listed. The first one is your IP address. We're going to use this number to sign in to our raspberry pi.(Note: don't use the ":9" at the end of your ip address)
+- Open the "Workgroup Manager" tab. You should see your device listed there, as "raspberrypi".
+- Open the "raspberrypi tab" next. You will see two numbers listed. The first one is your IP address. We're going to use this number to sign in to our raspberry pi. (Note: don't use the ":9" at the end of your ip address. Don't worry about it.)
 
 Open your "Terminal" program and type in the following below:
 ```
-ssh pi@<your ip address>
+ssh pi@yourIpAddress
 ```
-(replace <your ip address> with your ip address)
-Once you hit enter you may be propted with a dialog about "fingerprints". Just type "yes" and hit enter. 
+(replace yourIpAddress with your ip address)
+
+Once you hit enter you may be prompted with a dialog about "fingerprints". Just type "yes" and hit enter.
 You should then be prompted to enter a password. Type in "raspberry" for the password. No quotes.
 
 Hooray, you just ssh'd in to your Raspberry Pi!
 
 ### <a name="config"></a>Customizing your Pi
-Now we're going to set up our raspberry pi to be more personalized. Type in
+Now we're going to set up our raspberry pi to be more personalized. In terminal, type in:
 ```
 sudo raspi-config
 ```
@@ -93,8 +97,8 @@ ssh pi@hovapi.local
 
 ### <a name="update"></a>Updating your Pi
 Ssh back into your pi, as described in the last step.
-This next part will take some time, so prepare yourself for a nice break. 
-Once you are ssh'd in, type in the following: 
+This next part will take some time, so prepare yourself for a nice break.
+Once you are ssh'd in, in terminal type in the following:
 ```
 sudo apt-get update
 ```
@@ -132,7 +136,7 @@ network={
 ```
 Once you have updated the text, hit ctrl + "x" to exit, and hit "y", then "enter" to save the file with your update.
 
-Now type in the following, and in a few seconds your wifi should be up and running! -->
+Now in terminal, type in the following, and in a few seconds your wifi should be up and running! -->
 ```
 sudo service networking restart
 ```
