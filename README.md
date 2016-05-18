@@ -11,6 +11,7 @@ Want to learn more? See a typo? Please leave me some feedback [here :smiley:](ht
 - [Customizing your pi](#config)
 - [Updating your pi](#update)
 - [Connecting to wifi](#wifi)
+- [Edit pi files from your computer](#samba)
 - [Blinking our first LED](#blink)
 - [Writing our first server](#server)
 - [Making a program run “on-boot”](#systemd)
@@ -22,16 +23,9 @@ For this course, we're going to need the following hardware:
 - 1 Raspberry Pi (The version doesn't matter, although the newer models are faster)
   * If your Raspberry Pi model is < V3.0 then you will also need a wifi dongle
 - 1 Micro SD card, 4 gigabytes or larger
-- 1 Micro SD card adapter (Or some means for reading/writing to your micro SD card)
+- 1 Micro SD card adapter (Or some means for reading/writing to your micro SD card from your computer)
 - 1 Ethernet cable
 - Access to your wifi router
-
-The following items are only necessary if you want to connect your Raspberry Pi to other electronics
-- 1 Power cable
-- 1 Bread board
-- 1 Set of cables
-- 1 330Ω resistor
-- 1 LED
 
 ### <a name="raspbian"></a>Downloading a "Raspbian" Image
 In order to run your Raspberry Pi, you will need to download an Operating System.
@@ -50,7 +44,7 @@ Next you will see some scary messages saying that the program is going to "erase
 
 ### <a name="power"></a>Plug in your SD card and power up your Raspberry Pi
 Once the Pi Filler script is done running:
-- Remove the micro SD card, and place it into the Raspberry Pi's micro SD card slot. (note: On the newer models, there's no satisfying "snap" when you slide the SD card in place. Don't worry, it should work just fine.)
+- Remove the micro SD card from your computer and place it into the Raspberry Pi's micro SD card slot. (note: On the newer models, there's no satisfying "snap" when you slide the SD card in place. Don't worry, it should work just fine.)
 - Connect your wifi router to your Raspberry pi's Ethernet port using an ethernet cable.
 - Finally, plug your power supply in to the wall, and connect the micro usb end of it into your raspberry pi. You should immediately see lights flashing. Hooray!
 
@@ -59,7 +53,7 @@ We need to find out where our raspberry pi is. One way to do this is using Bonjo
 - Download Bonjour Browser [here](http://www.tildesoft.com/files/BonjourBrowser.dmg). Install the download and run it.
 - Once it's running, you should see a list of devices available on your network.
 - Open the "Workgroup Manager" tab. You should see your device listed there, as "raspberrypi".
-- Open the "raspberrypi tab" next. You will see two numbers listed. The first one is your IP address. We're going to use this number to sign in to our raspberry pi. (Note: don't use the ":9" at the end of your ip address. Don't worry about it.)
+- Open the "raspberrypi tab" next. You will see two numbers listed. The first one is your IP address. We're going to use this number to sign in to our raspberry pi. For example, if your IP address shows up as 100.101.102.103:9 then drop the ":9" and use "100.101.102.103".
 
 Open your "Terminal" program and type in the following below:
 ```
@@ -71,6 +65,23 @@ Once you hit enter you may be prompted with a dialog about "fingerprints". Just 
 You should then be prompted to enter a password. Type in "raspberry" for the password. No quotes.
 
 Hooray, you just ssh'd in to your Raspberry Pi!
+
+### <a name="terminal"></a>Using terminal with your pi
+Using terminal can be a bit confusing, especially when you're just getting started. One thing to pay close attention to is knowing "where" your terminal is signed in to. On each line, to the left of where you type in your text, you will see 
+```
+pi@raspberrypi":~ $
+```
+This means that you are signed in to your raspberry pi, and that when you type, you are typing in the context of the raspberry pi's terminal.
+If, however the text on the left is anything else, you are most likely typing in the context of your computer. 
+
+****************************************************************************
+MAKE SURE THAT YOU ARE SSH'D IN TO YOUR RASPBERRY PI BEFORE RUNNING ANY LINE OF CODE BELOW  
+DO NOT ENTER ANY CODE INTO YOUR TERMINAL UNLESS THE LEFT SIDE OF YOUR DISPLAY LOOKS LIKE THIS:  
+```
+pi@<your_user_name>":~ $
+```
+Where "your_user_name" is replaced with raspberrypi or whatever you have set your username to.  
+****************************************************************************
 
 ### <a name="config"></a>Customizing your Pi
 Now we're going to set up our raspberry pi to be more personalized. In terminal, type in:
@@ -143,10 +154,47 @@ sudo service networking restart
 
 Assuming everything goes according to plan, you now have a working wifi connection on your raspberry pi. Feel free to disconnect your ethernet cable, it's no longer necessary.
 
-### <a name="blink"></a>GPIO, aka the Pi's pins
+### <a name="samba">Set up Samba so you can edit pi files from your computer</a>
+Install samba
+```
+sudo apt-get install samba samba-common-bin
+```
 
+Then edit samba's configuration so that we can edit files.
+```
+sudo nano /etc/samba/smb.conf
+```
+
+Lets change the following line:
+```
+read_only = yes
+```
+to
+```
+read_only = no
+```
+
+Now let's add a user "pi" and setup a password for logging in to edit the Pi's files:
+```
+sudo smbpasswd -a pi
+``` 
+On Mac, you should now see the Raspberry Pi's "shared" folder available via Finder
+
+### <a name="blink"></a>GPIO, aka the Pi's pins
+![Rasbperry Pi Pinout](https://az835927.vo.msecnd.net/sites/iot/Resources/images/PinMappings/RP2_Pinout.png)  
+
+Learn how to blink an LED from the repo [here](www.link.com)
 
 ### <a name="server"></a>Let's make a server
+We are going to make a basic server using Python and Flask.  
+
+Follow the instructions from the repo [here](www.link.com)
+
+### <a name="neopixel"></a>Let's blink some neopixels
+Now that we understand how to use a server and how to control hardware with our Raspberry Pi's GPIO pins, lets combine the two ideas.  
+We are going to use a website to change the color of a neopixel.  
+
+Follow the instructions from the repo [here](www.link.com)
 
 
 ### <a name="systemd"></a>Running a server "On Boot"
