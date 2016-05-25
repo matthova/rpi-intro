@@ -165,13 +165,13 @@ Then edit samba's configuration so that we can edit files.
 sudo nano /etc/samba/smb.conf
 ```
 
-Lets change the following line:
+Lets change the following line (roughly 3/4 down the page):
 ```
-read_only = yes
+read only = yes
 ```
 to
 ```
-read_only = no
+read only = no
 ```
 
 Now let's add a user "pi" and setup a password for logging in to edit the Pi's files:
@@ -183,21 +183,27 @@ On Mac, you should now see the Raspberry Pi's "shared" folder available via Find
 ### <a name="blink"></a>GPIO, aka the Pi's pins
 ![Rasbperry Pi Pinout](https://az835927.vo.msecnd.net/sites/iot/Resources/images/PinMappings/RP2_Pinout.png)  
 
-Learn how to blink an LED from the repo [here](www.link.com)
+Learn how to blink an LED from the repo [here](https://github.com/matthova/blink).  
+
+
+### <a name="button"></a>Let's add a button
+Learn how to process input from a button from the repo [here](https://github.com/matthova/blink).  
 
 ### <a name="server"></a>Let's make a server
 We are going to make a basic server using Python and Flask.  
 
-Follow the instructions from the repo [here](www.link.com)
+Follow the instructions from the repo [here](https://github.com/matthova/basic-flask-server)
 
 ### <a name="neopixel"></a>Let's blink some neopixels
 Now that we understand how to use a server and how to control hardware with our Raspberry Pi's GPIO pins, lets combine the two ideas.  
 We are going to use a website to change the color of a neopixel.  
 
-Follow the instructions from the repo [here](www.link.com)
+Follow the instructions from the repo [here](https://github.com/matthova/neopixel_demo.git)
 
 
 ### <a name="systemd"></a>Running a server "On Boot"
+Follow the instructions from the repo [here](https://github.com/matthova/startup-script)
 
 
-### <a name="ui"></a>Running a UI "On Boot"
+### <a name="ui"></a>Running a ui "On Boot"
+Follow the instructions from the repo [here](https://github.com/guysoft/FullPageOS)
