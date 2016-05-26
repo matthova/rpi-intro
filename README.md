@@ -187,7 +187,7 @@ Learn how to blink an LED from the repo [here](https://github.com/matthova/blink
 
 
 ### <a name="button"></a>Let's add a button
-Learn how to process input from a button from the repo [here](https://github.com/matthova/blink).  
+Learn how to process input from a button from the repo [here](https://github.com/matthova/button).  
 
 ### <a name="server"></a>Let's make a server
 We are going to make a basic server using Python and Flask.  
@@ -202,8 +202,21 @@ Follow the instructions from the repo [here](https://github.com/matthova/neopixe
 
 
 ### <a name="systemd"></a>Running a server "On Boot"
-Follow the instructions from the repo [here](https://github.com/matthova/startup-script)
+One way that we can ensure a script will run when the raspberry pi is powered on, is to put that script into /etc/rc.local
+```
+sudo nano /etc/rc.local
+```
+When referring to any program, it's best practice to refer to their full path. For example, instead of python, you would use /usr/bin/python. In order to find out what is the full path for a program, for example, node, you would type
+```
+which node
+```
 
+When writing your scripts, you will put a "&" character at the end of the command, to flag that this process is running in the background
+To test this code, rather than rebooting, you can type
+```
+/etc/rc.local
+```
+Which will run all of the code in that file. If everything worked, reboot your pi and it should be running again.
 
 ### <a name="ui"></a>Running a ui "On Boot"
 Follow the instructions from the repo [here](https://github.com/guysoft/FullPageOS)
