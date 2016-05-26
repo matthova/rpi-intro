@@ -210,6 +210,10 @@ When referring to any program, it's best practice to refer to their full path. F
 ```
 which node
 ```
+In order to find out the current path of the file you are editing you can type
+```
+pwd
+```
 
 When writing your scripts, you will put a "&" character at the end of the command, to flag that this process is running in the background
 To test this code, rather than rebooting, you can type
