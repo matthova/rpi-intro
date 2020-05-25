@@ -42,6 +42,23 @@ After you unzip the file, feel free to drag it to your "Applications" folder.
 
 Next you will see some scary messages saying that the program is going to "erase" the sd card. It's okay, that's a part of the process. Writing the OS onto the SD card should take 2-3 minutes. When it's done, a message should pop up on the screen to let you know it's okay to remove the SD card.  
 
+##### Setting up wifi login
+If you're not connecting the pi over ethernet you can set up the image to connect to wifi by entering your credentials on the sd card as follows:
+- Enable ssh login  
+```touch /Volumes/boot/ssh```
+- Write you wifi login info onto the sd card  
+```nano Volumes/boot/wpa_supplicant.conf```  
+And then past in the following:
+```country=US
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid="NETWORK-NAME"
+    psk="NETWORK-PASSWORD"
+}
+```  
+
 ### <a name="power"></a>Plug in your SD card and power up your Raspberry Pi
 Once the Pi Filler script is done running:
 - Remove the micro SD card from your computer and place it into the Raspberry Pi's micro SD card slot. (note: On the newer models, there's no satisfying "snap" when you slide the SD card in place. Don't worry, it should work just fine.)
